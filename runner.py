@@ -1,6 +1,9 @@
 from game import Game
+from ai import AI
 
 game = Game()
+ai = AI()
+
 while True:
     print("Board: ")
     for row in game.board:
@@ -20,6 +23,9 @@ while True:
     player = game.get_player()
     print(player)
 
-    row = int(input("Choose row (0-index): "))
-    col = int(input("Choose column (0-index): "))
-    game.move((row, col))
+    if player == 'X':
+        game.move(ai.get_next_move(game.board))
+    else:
+        row = int(input("Choose row (0-index): "))
+        col = int(input("Choose column (0-index): "))
+        game.move((row, col))

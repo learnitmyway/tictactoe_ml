@@ -1,10 +1,6 @@
 import pytest
-from game import Game
 
-EMPTY = None
-
-X = "X"
-O = "O"
+from game import Game, EMPTY, X, O
 
 
 class TestGame:
