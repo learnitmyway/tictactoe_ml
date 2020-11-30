@@ -17,3 +17,7 @@ class Game():
         xCount = sum(i.count(X) for i in self.board)
         oCount = sum(i.count(O) for i in self.board)
         return O if xCount > oCount else X
+
+    def move(self, action):
+        row, col = action
+        self.board[row][col] = self.get_player()
