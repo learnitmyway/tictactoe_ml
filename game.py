@@ -55,3 +55,11 @@ class Game():
             return board[2][0]
 
         return None
+
+    def is_over(self):
+        for row in self.board:
+            for col in row:
+                if col == EMPTY:
+                    return False
+
+        return True

@@ -12,6 +12,10 @@ while True:
         print(winner)
         break
 
+    if game.is_over():
+        print("Game Over. No winner")
+        break
+
     print("Player's turn:")
     player = game.get_player()
     print(player)
