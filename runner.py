@@ -2,7 +2,7 @@ from game import Game
 from ai import AI
 
 game = Game()
-ai = AI()
+ai = AI(game)
 
 while True:
     print("Board: ")
@@ -24,7 +24,7 @@ while True:
     print(player)
 
     if player == 'X':
-        game.apply_action(ai.choose_action(game.board))
+        game.apply_action(ai.choose_action())
     else:
         row = int(input("Choose row (0-index): "))
         col = int(input("Choose column (0-index): "))

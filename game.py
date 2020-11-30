@@ -63,3 +63,6 @@ class Game():
                     return False
 
         return True
+
+    def get_available_actions(self):
+        return {(0, 0), (2, 2)}
