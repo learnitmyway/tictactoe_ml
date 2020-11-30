@@ -1,4 +1,12 @@
 {
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.testing.pytestArgs": [
+    "."
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestEnabled": true,
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#23daf4",
     "activityBar.activeBorder": "#f30cd6",
