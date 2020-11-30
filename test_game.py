@@ -67,3 +67,23 @@ class TestGame:
         ]
 
         assert game.get_winner() == X
+
+    def test_is_over(self):
+        game = Game()
+        game.board = [
+            [EMPTY, X, EMPTY],
+            [O, X, EMPTY],
+            [O, X, EMPTY]
+        ]
+
+        assert game.is_over() == False
+
+    def test_is_over(self):
+        game = Game()
+        game.board = [
+            [X, O, X],
+            [O, X, X],
+            [O, X, O]
+        ]
+
+        assert game.is_over() == True
