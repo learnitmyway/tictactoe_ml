@@ -24,8 +24,8 @@ while True:
     print(player)
 
     if player == 'X':
-        game.move(ai.get_next_move(game.board))
+        game.apply_action(ai.choose_action(game.board))
     else:
         row = int(input("Choose row (0-index): "))
         col = int(input("Choose column (0-index): "))
-        game.move((row, col))
+        game.apply_action((row, col))

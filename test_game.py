@@ -27,7 +27,7 @@ class TestGame:
 
         assert game.get_player() == X
 
-    def test_move(self):
+    def test_apply_action(self):
         game = Game()
         game.board = [
             [O, EMPTY, O],
@@ -35,7 +35,7 @@ class TestGame:
             [X, EMPTY, EMPTY]
         ]
 
-        game.move((0, 1))
+        game.apply_action((0, 1))
 
         expected_board = [
             [O, X, O],
