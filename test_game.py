@@ -47,3 +47,23 @@ class TestGame:
             [X, EMPTY, EMPTY]
         ]
         assert game.board == expected_board
+
+    def test_get_winner_none(self):
+        game = Game()
+        game.board = [
+            [EMPTY, EMPTY, EMPTY],
+            [O, X, EMPTY],
+            [O, X, EMPTY]
+        ]
+
+        assert game.get_winner() == None
+
+    def test_get_winner(self):
+        game = Game()
+        game.board = [
+            [EMPTY, X, EMPTY],
+            [O, X, EMPTY],
+            [O, X, EMPTY]
+        ]
+
+        assert game.get_winner() == X

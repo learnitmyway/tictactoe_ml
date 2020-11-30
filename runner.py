@@ -6,6 +6,12 @@ while True:
     for row in game.board:
         print(row)
 
+    winner = game.get_winner()
+    if winner:
+        print("Winner:")
+        print(winner)
+        break
+
     print("Player's turn:")
     player = game.get_player()
     print(player)
