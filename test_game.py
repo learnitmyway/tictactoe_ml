@@ -1,31 +1,34 @@
 import pytest
 
-from game import Game, EMPTY, X, O
+from game import Game, EMPTY, X, O, get_player, is_over, get_winner, get_available_actions
 
 
 class TestGame:
     def test_get_player_first_move(self):
-        assert Game().get_player() == X
+        board = [
+            [EMPTY, EMPTY, EMPTY],
+            [EMPTY, EMPTY, EMPTY],
+            [EMPTY, EMPTY, EMPTY]
+        ]
+        assert get_player(board) == X
 
     def test_get_player_O(self):
-        game = Game()
-        game.board = [
+        board = [
             [EMPTY, O, EMPTY],
             [EMPTY, X, EMPTY],
             [EMPTY, X, EMPTY]
         ]
 
-        assert game.get_player() == O
+        assert get_player(board) == O
 
     def test_get_player_X(self):
-        game = Game()
-        game.board = [
+        board = [
             [O, EMPTY, EMPTY],
             [EMPTY, EMPTY, X],
             [EMPTY, EMPTY, EMPTY]
         ]
 
-        assert game.get_player() == X
+        assert get_player(board) == X
 
     def test_apply_action(self):
         game = Game()
@@ -45,52 +48,47 @@ class TestGame:
         assert game.board == expected_board
 
     def test_get_winner_none(self):
-        game = Game()
-        game.board = [
+        board = [
             [EMPTY, EMPTY, EMPTY],
             [O, X, EMPTY],
             [O, X, EMPTY]
         ]
 
-        assert game.get_winner() == None
+        assert get_winner(board) == None
 
     def test_get_winner(self):
-        game = Game()
-        game.board = [
+        board = [
             [EMPTY, X, EMPTY],
             [O, X, EMPTY],
             [O, X, EMPTY]
         ]
 
-        assert game.get_winner() == X
+        assert get_winner(board) == X
 
     def test_is_over_false(self):
-        game = Game()
-        game.board = [
+        board = [
             [EMPTY, X, EMPTY],
             [O, X, EMPTY],
             [O, X, EMPTY]
         ]
 
-        assert game.is_over() == False
+        assert is_over(board) == False
 
     def test_is_over_true(self):
-        game = Game()
-        game.board = [
+        board = [
             [X, O, X],
             [O, X, X],
             [O, X, O]
         ]
 
-        assert game.is_over() == True
+        assert is_over(board) == True
 
     def test_get_available_actions(self):
-        game = Game()
-        game.board = [
+        board = [
             [EMPTY, EMPTY, EMPTY],
             [O, X, EMPTY],
             [O, X, EMPTY]
         ]
 
         expected = {(0, 0), (0, 1), (0, 2), (1, 2), (2, 2)}
-        assert game.get_available_actions() == expected
+        assert get_available_actions(board) == expected

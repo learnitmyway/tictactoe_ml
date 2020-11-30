@@ -1,10 +1,10 @@
 import random
 
+from game import get_available_actions
+
 
 class AI():
-    def __init__(self, game):
-        self.game = game
 
-    def choose_action(self):
-        available_actions = list(self.game.get_available_actions())
+    def choose_action(self, board):
+        available_actions = list(get_available_actions(board))
         return random.choice(available_actions)

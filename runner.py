@@ -1,30 +1,30 @@
-from game import Game
+from game import Game, EMPTY, X, O, get_player, is_over, get_winner, get_available_actions
 from ai import AI
 
 game = Game()
-ai = AI(game)
+ai = AI()
 
 while True:
     print("Board: ")
     for row in game.board:
         print(row)
 
-    winner = game.get_winner()
+    winner = get_winner(game.board)
     if winner:
         print("Winner:")
         print(winner)
         break
 
-    if game.is_over():
+    if is_over(game.board):
         print("Game Over. No winner")
         break
 
     print("Player's turn:")
-    player = game.get_player()
+    player = get_player(game.board)
     print(player)
 
     if player == 'X':
-        game.apply_action(ai.choose_action())
+        game.apply_action(ai.choose_action(game.board))
     else:
         row = int(input("Choose row (0-index): "))
         col = int(input("Choose column (0-index): "))
