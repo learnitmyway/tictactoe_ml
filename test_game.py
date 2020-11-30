@@ -83,3 +83,14 @@ class TestGame:
         ]
 
         assert game.is_over() == True
+
+    def test_get_available_actions(self):
+        game = Game()
+        game.board = [
+            [EMPTY, EMPTY, EMPTY],
+            [O, X, EMPTY],
+            [O, X, EMPTY]
+        ]
+
+        expected = {(0, 0), (0, 1), (0, 2), (1, 2), (2, 2)}
+        assert game.get_available_actions() == expected

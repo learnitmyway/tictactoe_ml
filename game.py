@@ -65,4 +65,9 @@ class Game():
         return True
 
     def get_available_actions(self):
-        return {(0, 0), (2, 2)}
+        actions = set()
+        for i, row in enumerate(self.board):
+            for j, col in enumerate(row):
+                if col == EMPTY:
+                    actions.add((i, j))
+        return actions
