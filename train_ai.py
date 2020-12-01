@@ -39,8 +39,8 @@ def update_ai(game, winner, ai, action, last):
     other_player = get_player(new_board)
 
     if winner:
-        ai.update(game.board, action, new_board, 1)
-        ai.update(
+        ai.update_q(game.board, action, new_board, 1)
+        ai.update_q(
             last[other_player]["board"],
             last[other_player]["action"],
             new_board,
@@ -49,7 +49,7 @@ def update_ai(game, winner, ai, action, last):
         return
 
     if last[other_player]["board"]:
-        ai.update(
+        ai.update_q(
             last[other_player]["board"],
             last[other_player]["action"],
             new_board,

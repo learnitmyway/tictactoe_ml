@@ -35,4 +35,4 @@ class TestTrainAI:
 
         update_ai(game, winner, ai, action, last)
 
-        # TODO: assert ai.update was called twice with the correct arguments
+        # TODO: assert ai.update_q was called twice with the correct arguments
