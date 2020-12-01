@@ -1,5 +1,6 @@
 from ai import AI
 from game import Game, get_winner, get_player, X, O, is_over
+import numpy
 
 
 def train_ai():
@@ -36,23 +37,27 @@ def train_ai():
 
 def update_ai(game, winner, ai, action, last):
     new_board = game.board.copy()
+    new_board_flat = list(numpy.array(new_board).flat)
     other_player = get_player(new_board)
+    last_other_player_board_flat = list(
+        numpy.array(last[other_player]["board"]).flat)
 
     if winner:
-        ai.update_q(game.board, action, new_board, 1)
+        board_flat = list(numpy.array(game.board).flat)
+        ai.update_q(board_flat, action, new_board_flat, 1)
         ai.update_q(
-            last[other_player]["board"],
+            last_other_player_board_flat,
             last[other_player]["action"],
-            new_board,
+            new_board_flat,
             -1
         )
         return
 
     if last[other_player]["board"]:
         ai.update_q(
-            last[other_player]["board"],
+            last_other_player_board_flat,
             last[other_player]["action"],
-            new_board,
+            new_board_flat,
             0
         )
         return
