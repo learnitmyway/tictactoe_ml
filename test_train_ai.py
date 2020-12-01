@@ -7,7 +7,7 @@ from game import Game, get_winner, get_player, X, O, is_over, EMPTY
 
 
 class TestTrainAI:
-    def test_update_ai_winner(self):
+    def test_update_ai(self):
         game = Game()
 
         previous_board = [
