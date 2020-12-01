@@ -1,8 +1,8 @@
 from game import Game, EMPTY, X, O, get_player, is_over, get_winner, get_available_actions
-from ai import AI
+from train_ai import train_ai
 
 game = Game()
-ai = AI()
+ai = train_ai()
 
 while True:
     print("Board: ")
