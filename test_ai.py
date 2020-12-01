@@ -52,5 +52,5 @@ class TestAI:
 
         future_reward = 0.7
 
-        assert ai.q.get((tuple(board), action)) == 0.5 + \
+        assert ai.q.get((tuple(board), action)) == q + \
             ai.alpha * (reward + future_reward - q)
