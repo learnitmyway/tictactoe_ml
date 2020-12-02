@@ -5,7 +5,7 @@ from game import Game, get_winner, get_player, X, O, is_over
 def train_ai():
     ai = AI()
 
-    for i in range(100):
+    for i in range(10000):
         print(f"Playing training game {i + 1}")
         game = Game()
 
