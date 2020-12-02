@@ -8,6 +8,7 @@ from game import EMPTY, X, O
 
 class TestAI:
     @mock.patch('random.choice')
+    @pytest.mark.skip()
     def test_choose_action_random(self, choice_mock):
         choice_mock.side_effect = self.get_first_arg
 
@@ -24,6 +25,23 @@ class TestAI:
 
     def get_first_arg(self, *args):
         return args[0][0]
+
+    def test_choose_action(self):
+        board = [
+            [O, O, X],
+            [O, X, EMPTY],
+            [X, X, EMPTY]
+        ]
+        board_flat = list(numpy.array(board).flat)
+
+        ai = AI()
+
+        ai.q[tuple(board_flat), (1, 2)] = -0.8
+        ai.q[tuple(board_flat), (2, 2)] = 0.8
+
+        action = ai.choose_action(board)
+
+        assert action == (2, 2)
 
     def test_update_q(self):
         board = [
