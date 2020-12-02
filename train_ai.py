@@ -27,7 +27,7 @@ def train_ai():
 
             winner = get_winner(game.board)
 
-            update_ai(game, winner, ai, action, last)
+            update_ai(board, game, winner, ai, action, last)
 
             if is_over(game.board) or winner:
                 break
@@ -35,20 +35,20 @@ def train_ai():
     return ai
 
 
-def update_ai(game, winner, ai, action, last):
-    new_board = game.board.copy()
-    new_board_flat = list(numpy.array(new_board).flat)
-    other_player = get_player(new_board)
+def update_ai(previous_board, game, winner, ai, action, last):
+    board = game.board.copy()
+    board_flat = list(numpy.array(board).flat)
+    other_player = get_player(board)
     last_other_player_board_flat = list(
         numpy.array(last[other_player]["board"]).flat)
 
     if winner:
-        board_flat = list(numpy.array(game.board).flat)
-        ai.update_q(board_flat, action, new_board_flat, 1)
+        previous_board_flat = list(numpy.array(previous_board).flat)
+        ai.update_q(previous_board_flat, action, board_flat, 1)
         ai.update_q(
             last_other_player_board_flat,
             last[other_player]["action"],
-            new_board_flat,
+            board_flat,
             -1
         )
         return
@@ -57,7 +57,7 @@ def update_ai(game, winner, ai, action, last):
         ai.update_q(
             last_other_player_board_flat,
             last[other_player]["action"],
-            new_board_flat,
+            board_flat,
             0
         )
         return

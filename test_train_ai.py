@@ -33,6 +33,6 @@ class TestTrainAI:
         winner = get_winner(board)
         ai = AI()
 
-        update_ai(game, winner, ai, action, last)
+        update_ai(previous_board, game, winner, ai, action, last)
 
         # TODO: assert ai.update_q was called twice with the correct arguments
