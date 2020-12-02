@@ -1,4 +1,4 @@
-from game import Game, EMPTY, X, O, get_player, is_over, get_winner, get_available_actions
+from game import Game, EMPTY, X, O, get_player, is_over, get_winner
 from train_ai import train_ai
 
 game = Game()
