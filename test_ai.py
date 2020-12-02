@@ -40,6 +40,8 @@ class TestAI:
             [O, X, EMPTY],
             [X, X, EMPTY]
         ]
+        new_board_flat = list(numpy.array(new_board).flat)
+
         ai = AI()
 
         reward = 0.6
@@ -47,9 +49,11 @@ class TestAI:
         q = 0.4
         ai.q[tuple(board_flat), action] = q
 
-        ai.update_q(board, action, new_board, reward)
+        future_reward = 0.8
+        ai.q[tuple(new_board_flat), (1, 2)] = -0.8
+        ai.q[tuple(new_board_flat), (2, 2)] = future_reward
 
-        future_reward = 0.7
+        ai.update_q(board, action, new_board, reward)
 
         assert ai.q.get((tuple(board_flat), action)) == q + \
             ai.alpha * (reward + future_reward - q)
