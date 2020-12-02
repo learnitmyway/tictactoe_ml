@@ -26,21 +26,20 @@ class TestAI:
         return args[0][0]
 
     def test_update_q(self):
-        board_raw = [
+        board = [
             [O, O, EMPTY],
             [O, X, EMPTY],
             [X, X, EMPTY]
         ]
-        board_flat = list(numpy.array(board_raw).flat)
+        board_flat = list(numpy.array(board).flat)
 
         action = (0, 2)
 
-        new_board_raw = [
+        new_board = [
             [O, O, X],
             [O, X, EMPTY],
             [X, X, EMPTY]
         ]
-        new_board_flat = list(numpy.array(new_board_raw).flat)
         ai = AI()
 
         reward = 0.6
@@ -48,7 +47,7 @@ class TestAI:
         q = 0.4
         ai.q[tuple(board_flat), action] = q
 
-        ai.update_q(board_flat, action, new_board_flat, reward)
+        ai.update_q(board, action, new_board, reward)
 
         future_reward = 0.7
 
