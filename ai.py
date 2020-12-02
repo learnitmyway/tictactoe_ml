@@ -13,7 +13,10 @@ class AI():
         return random.choice(available_actions)
 
     def update_q(self, board, action, new_board, reward):
-        q = 0.5
+        q = self.get_q(board, action)
         future_reward = 0.7
         self.q[tuple(board), action] = q + self.alpha * \
             (reward + future_reward - q)
+
+    def get_q(self, board, action):
+        return self.q.get((tuple(board), action)) or 0

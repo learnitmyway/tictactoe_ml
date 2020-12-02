@@ -45,7 +45,7 @@ class TestAI:
 
         reward = 0.6
 
-        q = 0.5
+        q = 0.4
         ai.q[tuple(board), action] = q
 
         ai.update_q(board, action, new_board, reward)
