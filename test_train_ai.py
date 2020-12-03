@@ -35,4 +35,4 @@ class TestTrainAI:
 
         update_ai(previous_board, game, winner, ai, action, last)
 
-        # TODO: assert ai.update_q was called twice with the correct arguments
+        # FIXME: How can I assert ai.update_q was called twice with the correct arguments?
