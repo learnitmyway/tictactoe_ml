@@ -15,18 +15,18 @@ def train_ai():
         }
 
         while True:
-            board = game.board.copy()
-            action = ai.choose_action(board)
-            player = get_player(board)
+            board_before_action = game.board.copy()
+            action = ai.choose_action(board_before_action)
+            player = get_player(board_before_action)
 
-            last[player]["board"] = board
+            last[player]["board"] = board_before_action
             last[player]["action"] = action
 
             game.apply_action(action)
 
             winner = get_winner(game.board)
 
-            update_ai(board, game, winner, ai, action, last)
+            update_ai(board_before_action, game, winner, ai, action, last)
 
             if is_over(game.board) or winner:
                 break
@@ -34,16 +34,16 @@ def train_ai():
     return ai
 
 
-def update_ai(previous_board, game, winner, ai, action, last):
-    board = game.board.copy()
-    other_player = get_player(board)
+def update_ai(board_before_action, game, winner, ai, action, last):
+    board_after_action = game.board.copy()
+    other_player = get_player(board_after_action)
 
     if winner:
-        ai.update_q(previous_board, action, board, 1)
+        ai.update_q(board_before_action, action, board_after_action, 1)
         ai.update_q(
             last[other_player]["board"],
             last[other_player]["action"],
-            board,
+            board_after_action,
             -1
         )
         return
@@ -52,7 +52,7 @@ def update_ai(previous_board, game, winner, ai, action, last):
         ai.update_q(
             last[other_player]["board"],
             last[other_player]["action"],
-            board,
+            board_after_action,
             0
         )
         return
