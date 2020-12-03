@@ -1,5 +1,6 @@
 import random
 import numpy
+import sys
 
 from game import get_available_actions
 
@@ -14,7 +15,7 @@ class AI():
 
         board_flat = list(numpy.array(board).flat)
 
-        best_q = -1
+        best_q = -sys.maxsize - 1
         chosen_action = list(available_actions)[0]
         for action in available_actions:
             q_val = self.get_q(board_flat, action)
@@ -40,7 +41,7 @@ class AI():
         return self.q.get((tuple(board_flat), action)) or 0
 
     def get_best_reward(self, available_actions, board_flat):
-        best_q = -1
+        best_q = -sys.maxsize - 1
         for action in available_actions:
             q_val = self.get_q(board_flat, action)
             if (q_val > best_q):
