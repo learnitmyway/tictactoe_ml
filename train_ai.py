@@ -1,5 +1,6 @@
 from ai import AI
 from game import Game, get_winner, get_player, X, O, is_over
+from copy import deepcopy
 
 
 def train_ai():
@@ -15,7 +16,7 @@ def train_ai():
         }
 
         while True:
-            board_before_action = game.board.copy()
+            board_before_action = deepcopy(game.board)
             action = ai.choose_action(board_before_action)
             player = get_player(board_before_action)
 
@@ -31,11 +32,14 @@ def train_ai():
             if is_over(game.board) or winner:
                 break
 
+    for board, action in ai.q.items():
+        print(board)
+        print(action)
     return ai
 
 
 def update_ai(board_before_action, game, winner, ai, action, last):
-    board_after_action = game.board.copy()
+    board_after_action = deepcopy(game.board)
     other_player = get_player(board_after_action)
 
     if winner:
