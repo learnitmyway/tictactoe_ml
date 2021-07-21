@@ -1,9 +1,6 @@
-import pytest
-import mock
-
 from train_ai import update_ai
 from ai import AI
-from game import Game, get_winner, get_player, X, O, is_over, EMPTY
+from game import Game, get_winner, X, O, EMPTY
 
 
 class TestTrainAI:

@@ -1,5 +1,3 @@
-import pytest
-import mock
 import numpy
 
 from ai import AI
